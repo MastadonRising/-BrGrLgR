@@ -1,32 +1,40 @@
-<h1>Cats!</h1>
+ <div class="container">
+    <div class="row">
 
-<h2>Cats that are not sleepy!</h2>
-
-<ul>
-  {{#each cats}}
-    {{#unless sleepy}}
-      {{> cats/cat-block sleep=true}}
-    {{/unless}}
-  {{/each}}
-</ul>
-
-<h2>Cats that are sleepy!</h2>
+<div class="col-md-3">
+<h2>Uneaten Goodness</h2>
 
 <ul>
   {{#each burger}}
-    {{#if sleepy}}
-      {{> cats/cat-block sleep=false}}
-    {{/if}}
+    {{#unless devoured}}
+      {{> newBurger}}
+    {{/unless}}
   {{/each}}
 </ul>
-
-<h2>Add a Burger</h2>
-<form class="create-form">
-
-  <div class="form-group">
+    </div>
+ <div style="height: 100vh">
+    <div class="flex-center flex-column">
+      <h1 class="text-hide animated fadeIn mb-4" style="background-image: url('/assets/images/burger.jpg'); width: 350px; height: 350px;">BrGrLgR</h1>
+      <h5 class="animated fadeIn mb-3">Thank you for using our product.</h5>
+      <p class="animated fadeIn text-muted">BrGrLgR Team</p>
+    <form class="create-form">
+  <div class="form-group animated fadeIn mb-3 ">
     <label for="ca">Burger Name:</label>
     <input type="text" id="ca" name="name">
   </div>
-
-   <button type="submit">Add Burger</button>
+  <button type="submit">Order Burger</button>
 </form>
+    </div>
+  </div>
+      <div class="col-md-3 ">
+<h2>Devoured goodness!</h2>
+<ul>
+  {{#each burger}}
+    {{#if devoured}}
+      {{> devoured}}
+    {{/if}}
+  {{/each}}
+</ul>
+  </div>
+      </div>
+
