@@ -35,5 +35,15 @@ const orm = {
       cb(result);
     });
   },
+  deleteAll: function (cb) {
+    var queryString =
+      "delete from burgers WHERE id is not null and devoured = 1";
+    connection.query(queryString, function (err, result) {
+      if (err) {
+        throw err;
+      }
+      cb(result);
+    });
+  },
 };
 module.exports = orm;

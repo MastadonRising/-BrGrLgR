@@ -4,10 +4,27 @@ var Orm = require("../config/orm");
 
 router.get("/", function (req, res) {
   Orm.selectAll(function (data) {
-    var hbsObject = {
-      burger: data,
-    };
-    res.render("index", hbsObject);
+    console.log(data);
+    let devoured = 0;
+    data.forEach(function (burger) {
+      console.log(burger.devoured);
+      if (burger.devoured === 1) {
+        devoured++;
+        console.log(devoured);
+      }
+    });
+
+    if (devoured >= 10) {
+      Orm.deleteAll(function (data) {
+        console.log("Made room for more yummy");
+        res.render("index", hbsObject);
+      });
+    } else {
+      var hbsObject = {
+        burger: data,
+      };
+      res.render("index", hbsObject);
+    }
   });
 });
 
